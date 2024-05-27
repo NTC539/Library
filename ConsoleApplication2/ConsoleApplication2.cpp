@@ -1,20 +1,69 @@
-﻿// ConsoleApplication2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
+﻿
 #include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+bool isTrue = 1;
+string Name[100];
+string Author[100];
+int Year[100];
+string ISBN[100];
+int action;
+int bcount;
+
+void see1book(int num) {
+		cout << "Book #" << num+1 << endl;
+		cout << "Name - " << Name[num] << endl;
+		cout << "Author - " << Author[num] << endl;
+		cout << "Year - " << Year[num] << endl;
+		cout << "ISBN - " << ISBN[num] << endl;
+}
+int booksCount(){
+	int n = 0;
+	for (size_t i = 0; i < 100; i++)
+		{
+		if (Year[i] != 0) {
+			n++;
+			}
+		}
+	return n;
+}
+void add() {
+	cout << "Book #" << bcount+1 << endl;
+	cout << "Name - ";
+	getline(cin, Name[bcount]);
+	cout << "Author - ";
+	getline(cin, Author[bcount]);
+	cout << "Year - ";
+	cin >> Year[bcount];
+	cout << "ISBN - ";
+	getline(cin, ISBN[bcount]);
+	see1book(bcount);
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	for (size_t i = 0; i < 100; i++)
+	{
+		Name[i] = "a";
+		Author[i] = "b";
+		Year[i] = 0;
+		ISBN[i] = "c";
+
+	}
+	bcount = booksCount();
+    while (isTrue){
+		cout << "1 - add book" << endl << "2 - delete book" << endl << "3 - find book" << endl << "4 - see all books" << endl << "5 - exit" << endl;
+		cout << "Change action >> ";
+		cin >> action;
+		switch (action)
+		{
+		case 1:
+			add();
+		default:
+			continue;
+		}
+    }
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
